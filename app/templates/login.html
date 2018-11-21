@@ -1,0 +1,18 @@
+{% extends "template.html"%}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="alert alert-danger">
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<form method="POST" action="{{url_for('autenticar')}}">
+    <p><label>Nome de usuário:</label> <input class="form-control" type="text" name="usuario" required></p>
+    <p><label>Senha:</label> <input class="form-control" type="password" name="senha" required></p>
+    <input type="hidden" name="prox_pag" value="{{ prox or url_for('index') }}" >
+    <p><button class="btn btn-primary" type="submit">Entrar</button></p>
+</form>
+{% endblock %}
