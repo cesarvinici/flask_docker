@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template, redirect, session, flash, url_for
+from flaskext.mysql import MySQL
 
 app = Flask(__name__)
 app.secret_key = "3123ui123hiu12h3iuh123iuh"
@@ -85,6 +86,8 @@ def logout():
 #METODOS EXTERNO
 def usuarioLogado():
     return 'usuario_logado' not in session or session['usuario_logado'] == None
+
+
 
 
 if __name__ == "__main__":
